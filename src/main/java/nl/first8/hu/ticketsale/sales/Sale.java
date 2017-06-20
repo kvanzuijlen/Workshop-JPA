@@ -37,4 +37,6 @@ public class Sale implements Serializable {
     @Min(1)
     private int price;
 
+    @OneToOne
+    private AuditTrial auditTrial;
 }

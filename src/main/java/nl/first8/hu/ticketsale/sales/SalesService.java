@@ -46,6 +46,12 @@ public class SalesService {
         sale.setSellDate(timestamp);
 
         salesRepository.insert(sale);
+
+        AuditTrial auditTrial = new AuditTrial();
+        auditTrial.setAccID(sale.getTicket().getAccount().getId());
+        auditTrial.setSaleID(sale.getId());
+
+        salesRepository.insert(auditTrial);
     }
 
     public Optional<Sale> getSale(Long accountId, Long concertId) {
